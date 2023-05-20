@@ -5,11 +5,12 @@ export default class Point {
   speed: number
   cur: number
   max: number
+
   constructor(index: number, x: number, y: number) {
     this.x = x
     this.y = y
     this.fixedY = y
-    this.speed = 0.02
+    this.speed = 0.05
     this.cur = index
     this.max = Math.random() * 100 + 150
   }

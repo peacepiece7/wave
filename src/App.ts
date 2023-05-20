@@ -30,7 +30,7 @@ class App {
 
     this.canvas.width = this.stageWidth * 2
     this.canvas.height = this.stageHeight * 2
-    this.ctx.scale(2, 2) // 레티나 디스플레이
+    this.ctx.scale(2, 2) // 레티나 디스플레이 잘 보이도록
 
     this.waveGroup.resize(this.stageWidth, this.stageHeight)
   }

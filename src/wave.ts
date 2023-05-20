@@ -1,11 +1,5 @@
 import Point from './Point.js'
 
-interface IWave {
-  resize: (stageWidth: number, stageHeight: number) => void
-  init: () => void
-  draw: (ctx: any) => void
-}
-
 export default class Wave {
   stageWidth: number = 0
   stageHeight: number = 0
@@ -21,9 +15,9 @@ export default class Wave {
     this.index = index
     this.totalPoints = totalPoints
     this.color = color
-
     this.point = new Point(index, -9999, -9999) // 초기값
   }
+
   resize(stageWidth: number, stageHeight: number) {
     this.stageWidth = stageWidth
     this.stageHeight = stageHeight
@@ -44,24 +38,27 @@ export default class Wave {
     }
   }
 
-  draw(ctx: any) {
+  draw(ctx: CanvasRenderingContext2D) {
     ctx.beginPath()
     ctx.fillStyle = this.color
 
     let prevX = this.points[0].x
     let prevY = this.points[0].y
+
     ctx.moveTo(prevX, prevY)
 
     for (let i = 0; i < this.totalPoints; i++) {
-      if (i < this.totalPoints - 1) {
-        this.points[i].update()
-      }
+      this.points[i].update()
+      // 첫번째, 마지막 번째 wave의 포인터는 움직이지 않게함
+      // if (i < this.totalPoints - 1) {
+      //   this.points[i].update()
+      // }
 
       const cx = (prevX + this.points[i].x) / 2
       const cy = (prevY + this.points[i].y) / 2
 
-      // ctx.quadraticCurveTo(prevX, prevY, cx, cy) 웨이브가 부드럽게
-      ctx.lineTo(cx, cy) // 웨이브가 각진 모양
+      ctx.quadraticCurveTo(prevX, prevY, cx, cy) // 웨이브가 부드럽게
+      // ctx.lineTo(cx, cy) // 웨이브가 각진 모양
 
       prevX = this.points[i].x
       prevY = this.points[i].y
