@@ -60,7 +60,8 @@ export default class Wave {
       const cx = (prevX + this.points[i].x) / 2
       const cy = (prevY + this.points[i].y) / 2
 
-      ctx.lineTo(cx, cy)
+      // ctx.quadraticCurveTo(prevX, prevY, cx, cy) 웨이브가 부드럽게
+      ctx.lineTo(cx, cy) // 웨이브가 각진 모양
 
       prevX = this.points[i].x
       prevY = this.points[i].y
