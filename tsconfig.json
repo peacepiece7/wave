@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    // "rootDir": "./src",
+    "incremental": true,
+    "target": "ES2015",
+    "module": "ESNext",
+    "moduleResolution": "node16",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "baseUrl": "./",
+    "strict": true
+  }
+}
